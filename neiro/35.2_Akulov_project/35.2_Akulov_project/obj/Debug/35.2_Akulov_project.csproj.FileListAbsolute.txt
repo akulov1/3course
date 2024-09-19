@@ -8,3 +8,13 @@ D:\c#\35.2_Akulov_project\35.2_Akulov_project\bin\Debug\35.2_Akulov_project.exe
 D:\c#\35.2_Akulov_project\35.2_Akulov_project\bin\Debug\35.2_Akulov_project.pdb
 D:\c#\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.exe
 D:\c#\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.pdb
+Z:\C#\35.2_Akulov_project\35.2_Akulov_project\bin\Debug\35.2_Akulov_project.exe.config
+Z:\C#\35.2_Akulov_project\35.2_Akulov_project\bin\Debug\35.2_Akulov_project.exe
+Z:\C#\35.2_Akulov_project\35.2_Akulov_project\bin\Debug\35.2_Akulov_project.pdb
+Z:\C#\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.csproj.AssemblyReference.cache
+Z:\C#\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\_35._2_Akulov_project.Form1.resources
+Z:\C#\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\_35._2_Akulov_project.Properties.Resources.resources
+Z:\C#\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.csproj.GenerateResource.cache
+Z:\C#\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.csproj.CoreCompileInputs.cache
+Z:\C#\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.exe
+Z:\C#\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.pdb

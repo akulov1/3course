@@ -43,6 +43,10 @@
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
+            this.numericUpDownAnswer = new System.Windows.Forms.NumericUpDown();
+            this.buttonSaveTrainSample = new System.Windows.Forms.Button();
+            this.buttonSaveTestSample = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnswer)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -195,11 +199,47 @@
             this.button15.UseVisualStyleBackColor = false;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
+            // numericUpDownAnswer
+            // 
+            this.numericUpDownAnswer.Location = new System.Drawing.Point(239, 333);
+            this.numericUpDownAnswer.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.numericUpDownAnswer.Name = "numericUpDownAnswer";
+            this.numericUpDownAnswer.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDownAnswer.TabIndex = 15;
+        
+            // 
+            // buttonSaveTrainSample
+            // 
+            this.buttonSaveTrainSample.Location = new System.Drawing.Point(209, 365);
+            this.buttonSaveTrainSample.Name = "buttonSaveTrainSample";
+            this.buttonSaveTrainSample.Size = new System.Drawing.Size(188, 26);
+            this.buttonSaveTrainSample.TabIndex = 16;
+            this.buttonSaveTrainSample.Text = "Сохранить обучающий пример";
+            this.buttonSaveTrainSample.UseVisualStyleBackColor = true;
+            this.buttonSaveTrainSample.Click += new System.EventHandler(this.buttonSaveTrainSample_Click);
+            // 
+            // buttonSaveTestSample
+            // 
+            this.buttonSaveTestSample.Location = new System.Drawing.Point(209, 397);
+            this.buttonSaveTestSample.Name = "buttonSaveTestSample";
+            this.buttonSaveTestSample.Size = new System.Drawing.Size(188, 28);
+            this.buttonSaveTestSample.TabIndex = 17;
+            this.buttonSaveTestSample.Text = "Сохранить тестовый пример";
+            this.buttonSaveTestSample.UseVisualStyleBackColor = true;
+            this.buttonSaveTestSample.Click += new System.EventHandler(this.buttonSaveTestSample_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonSaveTestSample);
+            this.Controls.Add(this.buttonSaveTrainSample);
+            this.Controls.Add(this.numericUpDownAnswer);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.button13);
@@ -217,6 +257,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnswer)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -238,6 +279,9 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.NumericUpDown numericUpDownAnswer;
+        private System.Windows.Forms.Button buttonSaveTrainSample;
+        private System.Windows.Forms.Button buttonSaveTestSample;
     }
 }
 

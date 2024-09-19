@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -96,5 +97,37 @@ namespace _35._2_Akulov_project
         {
             Change_State(button15, 0);
         }
+
+        private void SaveTrain(decimal vale, double[]input)
+        {
+            string pathDir;
+            string nameFileTrain;
+            pathDir = AppDomain.CurrentDomain.BaseDirectory;
+            nameFileTrain = pathDir + "train.txt";
+            string[] temp = new string[1];
+            temp[0] = vale.ToString();
+            temp[0] += " ";
+
+            for(int i = 0; i<15; i++)
+            {
+                temp[0] += input[i].ToString();
+            }
+
+
+            File.AppendAllLines(nameFileTrain, temp);
+ 
+
+        }
+
+        private void buttonSaveTrainSample_Click(object sender, EventArgs e)
+        {
+            SaveTrain(numericUpDownAnswer.Value,_inputPixels);   
+        }
+
+        private void buttonSaveTestSample_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
