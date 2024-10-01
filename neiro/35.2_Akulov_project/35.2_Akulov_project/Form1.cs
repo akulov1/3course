@@ -42,60 +42,60 @@ namespace _35._2_Akulov_project
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            Change_State(button2, 0);
+            Change_State(button2, 1);
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            Change_State(button3, 0);
+            Change_State(button3, 2);
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            Change_State(button4, 0);
+            Change_State(button4, 3);
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            Change_State(button5, 0);
+            Change_State(button5, 4);
 
         }
         private void button6_Click(object sender, EventArgs e)
         {
-            Change_State(button6, 0);
+            Change_State(button6, 5);
         }
         private void button7_Click(object sender, EventArgs e)
         {
-            Change_State(button7, 0);
+            Change_State(button7, 6);
         }
         private void button8_Click(object sender, EventArgs e)
         {
-            Change_State(button8, 0);
+            Change_State(button8, 7);
         }
         private void button9_Click(object sender, EventArgs e)
         {
-            Change_State(button9, 0);
+            Change_State(button9, 8);
         }
         private void button10_Click(object sender, EventArgs e)
         {
-            Change_State(button10, 0);
+            Change_State(button10, 9);
         }
         private void button11_Click(object sender, EventArgs e)
         {
-            Change_State(button11, 0);
+            Change_State(button11, 10);
         }
         private void button12_Click(object sender, EventArgs e)
         {
-            Change_State(button12, 0);
+            Change_State(button12, 11);
         }
         private void button13_Click(object sender, EventArgs e)
         {
-            Change_State(button13, 0);
+            Change_State(button13, 12);
         }
         private void button14_Click(object sender, EventArgs e)
         {
-            Change_State(button14, 0);
+            Change_State(button14, 13);
         }
         private void button15_Click(object sender, EventArgs e)
         {
-            Change_State(button15, 0);
+            Change_State(button15, 14);
         }
 
         private void SaveTrain(decimal vale, double[]input)
