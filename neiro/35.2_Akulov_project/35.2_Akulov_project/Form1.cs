@@ -119,6 +119,27 @@ namespace _35._2_Akulov_project
 
         }
 
+        private void SaveTest(decimal vale, double[] input)
+        {
+            string pathDir;
+            string nameFileTrain;
+            pathDir = AppDomain.CurrentDomain.BaseDirectory;
+            nameFileTrain = pathDir + "test.txt";
+            string[] temp = new string[1];
+            temp[0] = vale.ToString();
+            temp[0] += " ";
+
+            for (int i = 0; i < 15; i++)
+            {
+                temp[0] += input[i].ToString();
+            }
+
+
+            File.AppendAllLines(nameFileTrain, temp);
+
+
+        }
+
         private void buttonSaveTrainSample_Click(object sender, EventArgs e)
         {
             SaveTrain(numericUpDownAnswer.Value,_inputPixels);   
@@ -126,7 +147,7 @@ namespace _35._2_Akulov_project
 
         private void buttonSaveTestSample_Click(object sender, EventArgs e)
         {
-
+            SaveTest(numericUpDownAnswer.Value, _inputPixels);
         }
 
     }

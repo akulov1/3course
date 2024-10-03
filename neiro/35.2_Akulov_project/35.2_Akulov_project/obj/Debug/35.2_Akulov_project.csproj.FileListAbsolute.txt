@@ -28,3 +28,13 @@ C:\Users\zhibz\Desktop\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\3
 C:\Users\zhibz\Desktop\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.csproj.CoreCompileInputs.cache
 C:\Users\zhibz\Desktop\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.exe
 C:\Users\zhibz\Desktop\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.pdb
+Z:\neiro\35.2_Akulov_project\35.2_Akulov_project\bin\Debug\35.2_Akulov_project.exe.config
+Z:\neiro\35.2_Akulov_project\35.2_Akulov_project\bin\Debug\35.2_Akulov_project.exe
+Z:\neiro\35.2_Akulov_project\35.2_Akulov_project\bin\Debug\35.2_Akulov_project.pdb
+Z:\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.csproj.AssemblyReference.cache
+Z:\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\_35._2_Akulov_project.Form1.resources
+Z:\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\_35._2_Akulov_project.Properties.Resources.resources
+Z:\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.csproj.GenerateResource.cache
+Z:\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.csproj.CoreCompileInputs.cache
+Z:\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.exe
+Z:\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.pdb
