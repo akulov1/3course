@@ -10,3 +10,4 @@ def count_of_words(string):
         res_string+=f'{res[word]} '
     return res_string
 print(count_of_words('one two one tho three'))
+#https://cloud.mail.ru/public/99ZS/tBq2sgnRe
