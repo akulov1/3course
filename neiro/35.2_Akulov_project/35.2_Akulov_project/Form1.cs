@@ -9,7 +9,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+//15-70-31-10
 namespace _35._2_Akulov_project
 {
     public partial class Form1 : Form
