@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace _35._2_Akulov_project.NeuroNet
 {
@@ -85,9 +87,45 @@ namespace _35._2_Akulov_project.NeuroNet
                     break;
 
                 case MemoryMode.SET:
+                    List<string> lines = new List<string>();
+
+                    for (i = 0; i < numofneurons; i++)
+                    {
+                        string line = "";
+                        for (j = 0; j < numofprevneurons + 1; j++)
+                        {
+                            line += weights[i, j].ToString(System.Globalization.CultureInfo.InvariantCulture) + ";";
+                        }
+                        lines.Add(line.TrimEnd(';'));
+                    }
+
+                    File.WriteAllLines(path, lines);
                     break;
 
                 case MemoryMode.INIT:
+                    for (i = 0; i < numofneurons; i++)
+                    {
+                        double sum = 0;
+                        double sumSquares = 0;
+
+                        for (j = 0; j < numofprevneurons + 1; j++)
+                        {
+                            Random rand = new Random();
+                            double randomWeight = (rand.NextDouble() * 2 - 1); // значение в диапазоне (-1; 1)
+                            sum += weights[i, j];
+                            sumSquares += weights[i, j] * weights[i, j];
+                        }
+
+                        double mean = sum / (numofprevneurons + 1);
+                        double stdDev = Math.Sqrt(sumSquares / (numofprevneurons + 1));
+
+                        for (j = 0; j < numofprevneurons + 1; j++)
+                        {
+                            weights[i, j] = (weights[i, j] - mean) / stdDev; //нормализация весов
+                        }
+                    }
+
+                    WeightInitialize(MemoryMode.SET, path); //сохранение нормализованных весов в файл
                     break;
             }
             return weights;
@@ -97,4 +135,5 @@ namespace _35._2_Akulov_project.NeuroNet
         //для обратных проходов
         abstract public double[] BackwardPass(double[] stuff);
     }//прописать инициализацию и сохранение! 
+    //Архитектура 15-70-31-10
 }
