@@ -46,6 +46,8 @@
             this.numericUpDownAnswer = new System.Windows.Forms.NumericUpDown();
             this.buttonSaveTrainSample = new System.Windows.Forms.Button();
             this.buttonSaveTestSample = new System.Windows.Forms.Button();
+            this.button_Recognize = new System.Windows.Forms.Button();
+            this.label_answer = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnswer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -210,7 +212,6 @@
             this.numericUpDownAnswer.Name = "numericUpDownAnswer";
             this.numericUpDownAnswer.Size = new System.Drawing.Size(120, 20);
             this.numericUpDownAnswer.TabIndex = 15;
-        
             // 
             // buttonSaveTrainSample
             // 
@@ -232,11 +233,33 @@
             this.buttonSaveTestSample.UseVisualStyleBackColor = true;
             this.buttonSaveTestSample.Click += new System.EventHandler(this.buttonSaveTestSample_Click);
             // 
+            // button_Recognize
+            // 
+            this.button_Recognize.Location = new System.Drawing.Point(434, 367);
+            this.button_Recognize.Name = "button_Recognize";
+            this.button_Recognize.Size = new System.Drawing.Size(146, 24);
+            this.button_Recognize.TabIndex = 18;
+            this.button_Recognize.Text = "Распознать";
+            this.button_Recognize.UseVisualStyleBackColor = true;
+            this.button_Recognize.Click += new System.EventHandler(this.button_Recognize_Click);
+            // 
+            // label_answer
+            // 
+            this.label_answer.AutoSize = true;
+            this.label_answer.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_answer.Location = new System.Drawing.Point(450, 188);
+            this.label_answer.Name = "label_answer";
+            this.label_answer.Size = new System.Drawing.Size(100, 37);
+            this.label_answer.TabIndex = 19;
+            this.label_answer.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label_answer);
+            this.Controls.Add(this.button_Recognize);
             this.Controls.Add(this.buttonSaveTestSample);
             this.Controls.Add(this.buttonSaveTrainSample);
             this.Controls.Add(this.numericUpDownAnswer);
@@ -259,6 +282,7 @@
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnswer)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -282,6 +306,8 @@
         private System.Windows.Forms.NumericUpDown numericUpDownAnswer;
         private System.Windows.Forms.Button buttonSaveTrainSample;
         private System.Windows.Forms.Button buttonSaveTestSample;
+        private System.Windows.Forms.Button button_Recognize;
+        private System.Windows.Forms.Label label_answer;
     }
 }
 

@@ -14,6 +14,8 @@ namespace _35._2_Akulov_project
 {
     public partial class Form1 : Form
     {
+        private NeuroNet.Network net = new NeuroNet.Network();
+
         private double[] _inputPixels = new double[15] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
         public Form1()
         {
@@ -150,5 +152,10 @@ namespace _35._2_Akulov_project
             SaveTest(numericUpDownAnswer.Value, _inputPixels);
         }
 
+        private void button_Recognize_Click(object sender, EventArgs e)
+        {
+            net.ForwardPass(net, _inputPixels);
+            label_answer.Text = net.fact.ToList().IndexOf(net.fact.Max()).ToString();
+        }
     }
 }

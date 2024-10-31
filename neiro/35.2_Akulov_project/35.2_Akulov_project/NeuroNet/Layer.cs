@@ -112,6 +112,7 @@ namespace _35._2_Akulov_project.NeuroNet
                         {
                             Random rand = new Random();
                             double randomWeight = (rand.NextDouble() * 2 - 1); // значение в диапазоне (-1; 1)
+                            weights[i, j] = randomWeight;
                             sum += weights[i, j];
                             sumSquares += weights[i, j] * weights[i, j];
                         }
