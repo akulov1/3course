@@ -38,3 +38,13 @@ Z:\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.c
 Z:\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.csproj.CoreCompileInputs.cache
 Z:\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.exe
 Z:\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.pdb
+C:\Users\Uzer\Desktop\neiro\35.2_Akulov_project\35.2_Akulov_project\bin\Debug\35.2_Akulov_project.exe.config
+C:\Users\Uzer\Desktop\neiro\35.2_Akulov_project\35.2_Akulov_project\bin\Debug\35.2_Akulov_project.exe
+C:\Users\Uzer\Desktop\neiro\35.2_Akulov_project\35.2_Akulov_project\bin\Debug\35.2_Akulov_project.pdb
+C:\Users\Uzer\Desktop\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.csproj.AssemblyReference.cache
+C:\Users\Uzer\Desktop\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\_35._2_Akulov_project.Form1.resources
+C:\Users\Uzer\Desktop\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\_35._2_Akulov_project.Properties.Resources.resources
+C:\Users\Uzer\Desktop\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.csproj.GenerateResource.cache
+C:\Users\Uzer\Desktop\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.csproj.CoreCompileInputs.cache
+C:\Users\Uzer\Desktop\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.exe
+C:\Users\Uzer\Desktop\neiro\35.2_Akulov_project\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.pdb

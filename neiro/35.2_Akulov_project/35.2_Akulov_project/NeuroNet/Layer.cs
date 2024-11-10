@@ -63,27 +63,62 @@ namespace _35._2_Akulov_project.NeuroNet
             }
         }
 
-        public double[,] WeightInitialize(MemoryMode mm, string path)
+        public double[,] WeightInitialize(MemoryMode mm, string path, double[,] weights = null)
         {
             int i, j;
             char[] delim = new char[] { ';', ' ' };
             string tmpStr;
             string[] tmpStrWeights;
-            double[,] weights = new double[numofneurons, numofprevneurons + 1];
+
+            if (mm == MemoryMode.SET && weights == null)
+                throw new ArgumentException("Weights cannot be null when saving to file.");
+
+            if (weights == null)
+                weights = new double[numofneurons, numofprevneurons + 1];
 
             switch (mm)
             {
                 case MemoryMode.GET:
                     tmpStrWeights = File.ReadAllLines(path);
                     string[] memory_element;
-                    for (i = 0; i<numofneurons; i++)
+                    for (i = 0; i < numofneurons; i++)
                     {
                         memory_element = tmpStrWeights[i].Split(delim);
-                        for (j=0; j<numofprevneurons+1; j++)
+                        for (j = 0; j < numofprevneurons + 1; j++)
                         {
                             weights[i, j] = double.Parse(memory_element[j].Replace(',', '.'), System.Globalization.CultureInfo.InvariantCulture);
                         }
                     }
+                    break;
+
+                case MemoryMode.INIT:
+                    Random rand = new Random(); // Инициализация один раз
+
+                    for (i = 0; i < numofneurons; i++)
+                    {
+                        double sum = 0;
+                        double sumSquares = 0;
+
+                        for (j = 0; j < numofprevneurons + 1; j++)
+                        {
+                            double randomWeight = (rand.NextDouble() * 2 - 1); // значение в диапазоне (-1; 1)
+                            weights[i, j] = randomWeight;
+                            sum += weights[i, j];
+                            sumSquares += weights[i, j] * weights[i, j];
+                        }
+
+                        double mean = sum / (numofprevneurons + 1);
+                        double stdDev = Math.Sqrt(sumSquares / (numofprevneurons + 1));
+
+                        for (j = 0; j < numofprevneurons + 1; j++)
+                        {
+                            double s = (weights[i, j] - mean) / stdDev;
+                            weights[i, j] = s; //нормализация весов
+                        }
+                    }
+
+                    // Сохранение нормализованных весов в файл
+                    WeightInitialize(MemoryMode.SET, path, weights);
                     break;
 
                 case MemoryMode.SET:
@@ -101,34 +136,8 @@ namespace _35._2_Akulov_project.NeuroNet
 
                     File.WriteAllLines(path, lines);
                     break;
-
-                case MemoryMode.INIT:
-                    for (i = 0; i < numofneurons; i++)
-                    {
-                        double sum = 0;
-                        double sumSquares = 0;
-
-                        for (j = 0; j < numofprevneurons + 1; j++)
-                        {
-                            Random rand = new Random();
-                            double randomWeight = (rand.NextDouble() * 2 - 1); // значение в диапазоне (-1; 1)
-                            weights[i, j] = randomWeight;
-                            sum += weights[i, j];
-                            sumSquares += weights[i, j] * weights[i, j];
-                        }
-
-                        double mean = sum / (numofprevneurons + 1);
-                        double stdDev = Math.Sqrt(sumSquares / (numofprevneurons + 1));
-
-                        for (j = 0; j < numofprevneurons + 1; j++)
-                        {
-                            weights[i, j] = (weights[i, j] - mean) / stdDev; //нормализация весов
-                        }
-                    }
-
-                    WeightInitialize(MemoryMode.SET, path); //сохранение нормализованных весов в файл
-                    break;
             }
+
             return weights;
         }
         //для прямых проходов
