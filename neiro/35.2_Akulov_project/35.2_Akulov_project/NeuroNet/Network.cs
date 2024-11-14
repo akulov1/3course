@@ -18,6 +18,51 @@ namespace _35._2_Akulov_project.NeuroNet
         
         public Network() { }
 
+        public void Train(Network net)
+        {
+            int epoches = 70;
+            net.input_layer = new InputLayer(NetworkMode.Train);//инициализация вх слоя
+            double tmpSumError;
+            double[] errors;//массив сигнала ошибки
+            double[] temp_gsums1; //градиент первого слоя
+            double[] temp_gsums2;
+
+            for (int k = 0; k < epoches; k++)//перебор эпох обучения
+            {
+                e_error_avr = 0;//обновление энергии ошибки
+                for (int i =0; i< net.input_layer.TrainSet.GetLength(0); i++)
+                {
+                    double[] tmpTrain = new double[15];
+                    for (int j = 0; j < tmpTrain.Length; j++)
+                        tmpTrain[j] = net.input_layer.TrainSet[i, j + 1];
+                    ForwardPass(net, tmpTrain);
+
+                    tmpSumError = 0;
+                    errors = new double[net.fact.Length];
+                    for(int x = 0; x<errors.Length;x++)
+                    {
+                        if (x == net.input_layer.TrainSet[i, 0])
+                            errors[x] = net.fact[x] - 1.0;
+                        else
+                            errors[x] = -net.fact[x];
+
+                        tmpSumError += errors[x] * errors[x] / 2;
+                    }
+                    e_error_avr += tmpSumError / errors.Length;
+                    //обратный проход и коррекция весов
+                    temp_gsums2 = net.output_layer.BackwardPass(errors);
+                    temp_gsums1 = net.hidden_layer2.BackwardPass(temp_gsums2);
+                    net.hidden_layer1.BackwardPass(temp_gsums1);
+                }
+                e_error_avr /= net.input_layer.TrainSet.GetLength(0); //средняя энергия ошибки К-ой эпохи
+            }
+            net.input_layer = null;
+
+            net.hidden_layer1.WeightInitialize(MemoryMode.SET, nameof(hidden_layer1) + "_memory.csv");
+            net.hidden_layer2.WeightInitialize(MemoryMode.SET, nameof(hidden_layer2) + "_memory.csv");
+            net.output_layer.WeightInitialize(MemoryMode.SET, nameof(output_layer) + "_memory.csv");
+        }
+
         //прямой проход нейросети
         public void ForwardPass(Network net, double[] netInput)
         {
@@ -26,6 +71,8 @@ namespace _35._2_Akulov_project.NeuroNet
             net.hidden_layer2.Recognize(null, net.output_layer);
             net.output_layer.Recognize(net, null);
         }
+
+
 
     }
 }

@@ -48,6 +48,7 @@
             this.buttonSaveTestSample = new System.Windows.Forms.Button();
             this.button_Recognize = new System.Windows.Forms.Button();
             this.label_answer = new System.Windows.Forms.Label();
+            this.button_train = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAnswer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -253,11 +254,22 @@
             this.label_answer.TabIndex = 19;
             this.label_answer.Text = "label1";
             // 
+            // button_train
+            // 
+            this.button_train.Location = new System.Drawing.Point(434, 397);
+            this.button_train.Name = "button_train";
+            this.button_train.Size = new System.Drawing.Size(146, 28);
+            this.button_train.TabIndex = 20;
+            this.button_train.Text = "Обучить";
+            this.button_train.UseVisualStyleBackColor = true;
+            this.button_train.Click += new System.EventHandler(this.button_train_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button_train);
             this.Controls.Add(this.label_answer);
             this.Controls.Add(this.button_Recognize);
             this.Controls.Add(this.buttonSaveTestSample);
@@ -308,6 +320,7 @@
         private System.Windows.Forms.Button buttonSaveTestSample;
         private System.Windows.Forms.Button button_Recognize;
         private System.Windows.Forms.Label label_answer;
+        private System.Windows.Forms.Button button_train;
     }
 }
 

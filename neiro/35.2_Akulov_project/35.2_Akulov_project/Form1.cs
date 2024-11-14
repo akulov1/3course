@@ -157,5 +157,10 @@ namespace _35._2_Akulov_project
             net.ForwardPass(net, _inputPixels);
             label_answer.Text = net.fact.ToList().IndexOf(net.fact.Max()).ToString();
         }
+
+        private void button_train_Click(object sender, EventArgs e)
+        {
+            net.Train(net);
+        }
     }
 }
