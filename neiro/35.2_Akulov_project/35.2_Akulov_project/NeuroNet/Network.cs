@@ -58,9 +58,9 @@ namespace _35._2_Akulov_project.NeuroNet
             }
             net.input_layer = null;
 
-            net.hidden_layer1.WeightInitialize(MemoryMode.SET, nameof(hidden_layer1) + "_memory.csv");
-            net.hidden_layer2.WeightInitialize(MemoryMode.SET, nameof(hidden_layer2) + "_memory.csv");
-            net.output_layer.WeightInitialize(MemoryMode.SET, nameof(output_layer) + "_memory.csv");
+            net.hidden_layer1.WeightInitialize(MemoryMode.SET, AppDomain.CurrentDomain.BaseDirectory + "memory\\"+ "hidden_layer1_memory.csv");
+            net.hidden_layer2.WeightInitialize(MemoryMode.SET, AppDomain.CurrentDomain.BaseDirectory + "memory\\" + "hidden_layer2_memory.csv");
+            net.output_layer.WeightInitialize(MemoryMode.SET, AppDomain.CurrentDomain.BaseDirectory + "memory\\" + "output_layer_memory.csv");
         }
 
         //прямой проход нейросети

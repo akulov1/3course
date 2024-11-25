@@ -15,6 +15,7 @@
         public override double[] BackwardPass(double[] errors)
         {
             double[] gr_sum = new double[numofprevneurons+1];
+
             //код обучения нейросети
             return gr_sum;
         }

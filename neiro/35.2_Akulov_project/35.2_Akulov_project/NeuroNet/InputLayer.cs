@@ -29,7 +29,7 @@ namespace _35._2_Akulov_project.NeuroNet
                     {
                         tmpStr = tmpArrStr[i].Split();
                         tmpArr = new double[tmpStr.Length];
-                        for (int j = 0; j<tmpArrStr.Length; j++)
+                        for (int j = 0; j<tmpStr.Length; j++)
                         {
                             tmpArr[j] = double.Parse(tmpStr[j], System.Globalization.CultureInfo.InvariantCulture);
                         }
@@ -53,7 +53,17 @@ namespace _35._2_Akulov_project.NeuroNet
                     }
 
                     break;
-                case NetworkMode.Test://доделать
+                
+                case NetworkMode.Test:
+                    tmpArrStr = File.ReadAllLines(path + "test.txt");
+                    for (int i = 0; i < tmpArrStr.Length; i++)
+                    {
+                        tmpStr = tmpArrStr[i].Split();
+                        for (int j = 0; j < tmpStr.Length; j++)
+                        {
+                            testset[i, j] = double.Parse(tmpStr[j], System.Globalization.CultureInfo.InvariantCulture);
+                        }
+                    }
                     break;
                 case NetworkMode.Recognise:
                     break;

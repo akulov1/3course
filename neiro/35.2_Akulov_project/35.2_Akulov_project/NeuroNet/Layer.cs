@@ -70,8 +70,8 @@ namespace _35._2_Akulov_project.NeuroNet
             string tmpStr;
             string[] tmpStrWeights;
 
-            if (mm == MemoryMode.SET && weights == null)
-                throw new ArgumentException("Weights cannot be null when saving to file.");
+            //if (mm == MemoryMode.SET && weights == null)
+              //  throw new ArgumentException("Weights cannot be null when saving to file.");
 
             if (weights == null)
                 weights = new double[numofneurons, numofprevneurons + 1];
@@ -144,6 +144,6 @@ namespace _35._2_Akulov_project.NeuroNet
         abstract public void Recognize(Network net, Layer nextLayer);
         //для обратных проходов
         abstract public double[] BackwardPass(double[] stuff);
-    }//прописать инициализацию и сохранение! 
+    }
     //Архитектура 15-70-31-10
 }

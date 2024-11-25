@@ -108,7 +108,6 @@ namespace _35._2_Akulov_project
             nameFileTrain = pathDir + "train.txt";
             string[] temp = new string[1];
             temp[0] = vale.ToString();
-            temp[0] += " ";
 
             for(int i = 0; i<15; i++)
             {
@@ -129,7 +128,6 @@ namespace _35._2_Akulov_project
             nameFileTrain = pathDir + "test.txt";
             string[] temp = new string[1];
             temp[0] = vale.ToString();
-            temp[0] += " ";
 
             for (int i = 0; i < 15; i++)
             {
