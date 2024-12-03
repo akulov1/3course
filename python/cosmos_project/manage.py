@@ -20,3 +20,12 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+#pip install django
+#django-admin startproject cosmos_project
+#cd cosmos_project
+#python manage.py startapp cosmos
+#models
+#python manage.py makemigrations
+#python manage.py migrate
+#python manage.py runserver createsuperuser
