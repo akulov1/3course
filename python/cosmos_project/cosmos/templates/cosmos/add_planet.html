@@ -1,0 +1,7 @@
+<h1>Добавить новую планету</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Добавить</button>
+</form>
+<a href="{% url 'home' %}">На главную</a>

@@ -1,0 +1,7 @@
+<h1>Редактировать {{ planet.name }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Сохранить</button>
+</form>
+<a href="{% url 'planet_detail' planet.id %}">Отмена</a>

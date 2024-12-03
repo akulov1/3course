@@ -1,0 +1,16 @@
+<h1>{{ planet.name }}</h1>
+<p>Тип: {{ planet.type }}</p>
+<p>Расстояние от Солнца: {{ planet.distance_from_sun }} млн км</p>
+<h2>Спутники</h2>
+<ul>
+    {% for satellite in planet.satellites.all %}
+        <li>{{ satellite.name }}</li>
+    {% endfor %}
+</ul>
+<h2>Миссии</h2>
+<ul>
+    {% for mission in planet.missions.all %}
+        <li>{{ mission.name }} ({{ mission.date }})</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'home' %}">На главную</a>

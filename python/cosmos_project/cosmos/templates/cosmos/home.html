@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница</title>
+</head>
+<body>
+    <h1>Планеты</h1>
+    <ul>
+        {% for planet in planets %}
+            <li>
+                <a href="{% url 'planet_detail' planet.id %}">{{ planet.name }}</a>
+                ({{ planet.type }}, {{ planet.distance_from_sun }} млн км)
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_planet' %}">Добавить новую планету</a>
+</body>
+</html>
