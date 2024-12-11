@@ -47,7 +47,7 @@ namespace _35._2_Akulov_project.NeuroNet
                     for (int x = 0; x < errors.Length; x++)
                     {
                         if (x == net.input_layer.TrainSet[i, 0])
-                            errors[x] = net.fact[x] - 1.0;
+                            errors[x] = 1-net.fact[x];
                         else
                             errors[x] = -net.fact[x];
 
