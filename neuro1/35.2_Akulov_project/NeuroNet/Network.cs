@@ -63,22 +63,38 @@ namespace _35._2_Akulov_project.NeuroNet
                 e_error_avr[k] /= net.input_layer.TrainSet.GetLength(0); // Средняя энергия ошибки k-ой эпохи
             }
             net.input_layer = null;
-
-            // Записываем веса в файлы
-            net.hidden_layer1.WeightInitialize(MemoryMode.SET,AppDomain.CurrentDomain.BaseDirectory + "memory\\hidden_layer1_memory.csv");
-            net.hidden_layer2.WeightInitialize(MemoryMode.SET,AppDomain.CurrentDomain.BaseDirectory + "memory\\hidden_layer2_memory.csv");
-            net.output_layer.WeightInitialize(MemoryMode.SET,AppDomain.CurrentDomain.BaseDirectory + "memory\\output_layer_memory.csv");
+            SaveWeights();
         }
-            //прямой проход нейросети
-        public void ForwardPass(Network net, double[] netInput)
+        
+        private void SaveWeights()
+        {
+            string pathBase = AppDomain.CurrentDomain.BaseDirectory + "memory\\";
+            hidden_layer1.WeightInitialize(MemoryMode.SET, pathBase + "hidden_layer1_memory.csv", GetWeights(hidden_layer1));
+            hidden_layer2.WeightInitialize(MemoryMode.SET, pathBase + "hidden_layer2_memory.csv", GetWeights(hidden_layer2));
+            output_layer.WeightInitialize(MemoryMode.SET, pathBase + "output_layer_memory.csv", GetWeights(output_layer));
+        }
+        
+        private double[,] GetWeights(Layer layer)
+        {
+            double[,] weights = new double[layer.Neurons.Length, layer.Neurons[0].Weights.Length];
+        
+            for (int i = 0; i < layer.Neurons.Length; i++)
+            {
+                for (int j = 0; j < layer.Neurons[i].Weights.Length; j++)
+                {
+                    weights[i, j] = layer.Neurons[i].Weights[j];
+                }
+            }
+        
+            return weights;
+        }
+        
+        public void ForwardPass(NetWork net, double[] netInput)
         {
             net.hidden_layer1.Data = netInput;
             net.hidden_layer1.Recognize(null, net.hidden_layer2);
             net.hidden_layer2.Recognize(null, net.output_layer);
             net.output_layer.Recognize(net, null);
         }
-
-
-
     }
 }
