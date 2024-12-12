@@ -17,8 +17,8 @@ namespace _35._2_Akulov_project.NeuroNet
         string pathFileWeights;
         protected int numofneurons;
         protected int numofprevneurons;
-        protected const double learningrate = 0.005d; //скорость обучения
-        protected const double momentum = 0.05d; //param optimization 
+        protected const double learningrate = 0.17; //скорость обучения
+        protected const double momentum = 0.00d; //param optimization 
         protected double[,] lastdeltaweights;
         public Neuron[] _neurons;
 

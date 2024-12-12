@@ -169,7 +169,12 @@ namespace _35._2_Akulov_project
         //обработчик события кнопки тестировать
         private void button_test_Click(object sender, EventArgs e)
         {
-
+            net.Test(net);
+            for (int i = 0; i < net.E_error_avr.Length; i++)
+            {
+                chart_Eavr.Series[0].Points.AddY(net.E_error_avr[i]);
+            }
+            MessageBox.Show("Тестирование успешно завершено.", "Информация");
         }
     }
 }

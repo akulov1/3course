@@ -14,9 +14,9 @@
         }
         public override double[] BackwardPass(double[] errors)
         {
-            double[] gr_sum = new double[numofprevneurons+1];
+            double[] gr_sum = new double[numofprevneurons];
 
-            for(int j =0; j < numofprevneurons+1; j++)
+            for(int j =0; j < numofprevneurons; j++)
             {
                 double sum = 0;
                 for (int k = 0; k < numofneurons; k++)

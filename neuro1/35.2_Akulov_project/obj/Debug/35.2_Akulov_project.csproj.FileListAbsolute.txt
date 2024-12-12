@@ -68,3 +68,13 @@ C:\Users\zhibz\Desktop\Новая папка\35.2_Akulov_project\obj\Debug\35.2_
 C:\Users\zhibz\Desktop\Новая папка\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.csproj.CoreCompileInputs.cache
 C:\Users\zhibz\Desktop\Новая папка\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.exe
 C:\Users\zhibz\Desktop\Новая папка\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.pdb
+Z:\neuro1\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.csproj.AssemblyReference.cache
+Z:\neuro1\35.2_Akulov_project\obj\Debug\_35._2_Akulov_project.Form1.resources
+Z:\neuro1\35.2_Akulov_project\obj\Debug\_35._2_Akulov_project.Properties.Resources.resources
+Z:\neuro1\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.csproj.GenerateResource.cache
+Z:\neuro1\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.csproj.CoreCompileInputs.cache
+Z:\neuro1\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.exe
+Z:\neuro1\35.2_Akulov_project\obj\Debug\35.2_Akulov_project.pdb
+Z:\neuro1\35.2_Akulov_project\bin\Debug\35.2_Akulov_project.exe.config
+Z:\neuro1\35.2_Akulov_project\bin\Debug\35.2_Akulov_project.exe
+Z:\neuro1\35.2_Akulov_project\bin\Debug\35.2_Akulov_project.pdb

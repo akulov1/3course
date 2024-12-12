@@ -14,6 +14,8 @@ namespace _35._2_Akulov_project.NeuroNet
         public double[,] TrainSet { get => trainset; }
         public double[,] TestSet { get => testset; }
 
+
+
         public InputLayer(NetworkMode nm)
         {
             string path = AppDomain.CurrentDomain.BaseDirectory;
@@ -69,5 +71,27 @@ namespace _35._2_Akulov_project.NeuroNet
                     break;
             }
         }
+
+        public void Shuffling_Array_Rows(double[,] arr)
+        {
+            int j;
+            Random random = new Random();
+            double[] temp = new double[arr.GetLength(1)];
+
+            for(int n = arr.GetLength(0) - 1; n>=1; n--)
+            {
+                j = random.Next(n + 1);
+                for (int i = 0; i<arr.GetLength(1); i++)
+                {
+                    temp[i] = arr[n, i];
+                }
+                for(int i =0; i < arr.GetLength(1); i++)
+                {
+                    arr[n, i] = arr[j, i];
+                    arr[j, i] = temp[i];
+                }
+            }
+        }
+
     }
 }
