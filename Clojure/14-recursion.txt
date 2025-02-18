@@ -1,0 +1,166 @@
+(ns koans.14-recursion
+  (:require [koan-engine.core :refer :all]))
+
+(defn is-even? [n]
+  (if (= n 0)
+    __
+    (___ (is-even? (dec n)))))
+
+(defn is-even-bigint? [n]
+  (loop [n   n
+         acc true]
+    (if (= n 0)
+      __
+      (recur (dec n) (not acc)))))
+
+(defn recursive-reverse [coll]
+  __)
+
+(defn factorial [n]
+  __)
+
+(meditations
+---------------------------------------------------------------------------
+===========================================================================
+  "Recursion ends with a base case"
+  (= true (is-even? 0))
+===========================================================================
+user=> (defn is-even? [n]  (if (= n 0)
+             true
+       (not (is-even? (dec n)))))(= true (is-even? 0))
+#'user/is-even?
+true
+
+
+===========================================================================
+  "And starts by moving toward that base case"
+  (= false (is-even? 1))
+===========================================================================
+user=> (defn is-even? [n]  (if (= n 0)
+             true
+       (not (is-even? (dec n)))))(= false (is-even? 1))
+#'user/is-even?
+true
+
+===========================================================================
+  "Having too many stack frames requires explicit tail calls with recur"
+  (= false (is-even-bigint? 100003N))
+===========================================================================
+user=> (defn is-even-bigint? [n]  (loop [n   n
+         acc true]
+       (if (= n 0)
+         acc
+       (recur (dec n) (not acc)))))(= false (is-even-bigint? 100003N))
+#'user/is-even-bigint?
+true
+
+===========================================================================
+  "Reversing directions is easy when you have not gone far"
+  (= '(1) (recursive-reverse [1]))
+===========================================================================
+user=> (defn recursive-reverse [coll]
+       (loop [n 0 acc '()]
+       (if (= (count acc) (count coll))
+         acc
+       (recur (inc n) (conj acc (nth coll n))))))(= '(1) (recursive-reverse [1]))
+#'user/recursive-reverse
+true
+
+
+===========================================================================
+  "Yet it becomes more difficult the more steps you take"
+  (= '(6 5 4 3 2) (recursive-reverse [2 3 4 5 6]))
+===========================================================================
+user=> (defn recursive-reverse [coll]
+       (loop [n 0 acc '()]
+       (if (= (count acc) (count coll))
+         acc
+       (recur (inc n) (conj acc (nth coll n))))))
+       (= '(6 5 4 3 2) (recursive-reverse [2 3 4 5 6]))
+#'user/recursive-reverse
+true
+
+
+===========================================================================
+  "Simple things may appear simple"
+  (= 1 (factorial 1))
+===========================================================================
+user=> (defn factorial [n]
+         (loop [n n acc 1]
+         (if (= n 1)
+           acc
+         (recur (dec n)
+         (* acc n)))))(= 1 (factorial 1))
+#'user/factorial
+true
+
+
+===========================================================================
+  "They may require other simple steps"
+  (= 2 (factorial 2))
+===========================================================================
+user=> (defn factorial [n]
+         (loop [n n acc 1]
+         (if (= n 1)
+           acc
+         (recur (dec n)
+         (* acc n)))))(= 2 (factorial 2))
+#'user/factorial
+true
+
+
+===========================================================================
+  "Sometimes a slightly bigger step is necessary"
+  (= 6 (factorial 3))
+===========================================================================
+user=> (defn factorial [n]
+         (loop [n n acc 1]
+         (if (= n 1)
+           acc
+         (recur (dec n)
+         (* acc n)))))(= 6 (factorial 3))
+#'user/factorial
+true
+
+
+===========================================================================
+  "And eventually you must think harder"
+  (= 24 (factorial 4))
+===========================================================================
+user=> (defn factorial [n]
+         (loop [n n acc 1]
+         (if (= n 1)
+           acc
+         (recur (dec n)
+         (* acc n)))))(= 24 (factorial 4))
+#'user/factorial
+true
+
+
+===========================================================================
+  "You can even deal with very large numbers"
+  (< 1000000000000000000000000N (factorial 1000N))
+===========================================================================
+user=> (defn factorial [n]
+         (loop [n n acc 1]
+         (if (= n 1)
+           acc
+         (recur (dec n)
+         (* acc n)))))
+(< 1000000000000000000000000N (factorial 1000N))
+#'user/factorial
+true
+
+===========================================================================
+  "But what happens when the machine limits you?"
+  (< 1000000000000000000000000N (factorial 100003N)))
+===========================================================================
+user=> (defn factorial [n]
+         (loop [n n acc 1]
+         (if (= n 1)
+           acc
+         (recur (dec n)
+         (* acc n)))))
+(< 1000000000000000000000000N (factorial 100003N)))
+#'user/factorial
+true

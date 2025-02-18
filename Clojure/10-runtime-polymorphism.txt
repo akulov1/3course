@@ -1,0 +1,117 @@
+(ns koans.10-runtime-polymorphism
+  (:require [koan-engine.core :refer :all]))
+
+(defn hello
+  ([] "Hello World!")
+  ([a] (str "Hello, you silly " a "."))
+  ([a & more] (str "Hello to this group: "
+                   (apply str
+                          (interpose ", " (cons a more)))
+                   "!")))
+
+(defmulti diet (fn [x] (:eater x)))
+(defmethod diet :herbivore [a] __)
+(defmethod diet :carnivore [a] __)
+(defmethod diet :default [a] __)
+
+(meditations
+---------------------------------------------------------------------------
+===========================================================================
+  "Some functions can be used in different ways - with no arguments"
+  (= __ (hello))
+===========================================================================
+user=> (defn hello
+  ([] "Hello World!")
+  ([a] (str "Hello, you silly " a "."))
+  ([a & more] (str "Hello to this group: "
+                   (apply str
+                          (interpose ", " (cons a more)))
+                   "!"))) 
+  (="Hello World!" (hello))
+#'user/hello
+true
+
+
+===========================================================================
+  "With one argument"
+  (= __ (hello "world"))
+===========================================================================
+user=> (defn hello
+  ([] "Hello World!")
+  ([a] (str "Hello, you silly " a "."))
+  ([a & more] (str "Hello to this group: "
+                   (apply str
+                          (interpose ", " (cons a more)))
+                   "!"))) 
+  (= "Hello, you silly world." (hello "world"))
+#'user/hello
+true
+
+
+===========================================================================
+  "Or with many arguments"
+  (= __
+     (hello "Peter" "Paul" "Mary"))
+===========================================================================
+user=> (defn hello
+  ([] "Hello World!")
+  ([a] (str "Hello, you silly " a "."))
+  ([a & more] (str "Hello to this group: "
+                   (apply str
+                          (interpose ", " (cons a more)))
+                   "!")))
+  (= "Hello to this group: Peter, Paul, Mary!"
+       (hello "Peter" "Paul" "Mary"))
+#'user/hello
+true
+
+
+===========================================================================
+  "Multimethods allow more complex dispatching"
+  (= "Bambi eats veggies."
+     (diet {:species "deer" :name "Bambi" :age 1 :eater :herbivore}))
+===========================================================================
+(defmulti diet (fn [x] (:eater x)))
+(defmethod diet :herbivore [a] (str (:name a) " eats veggies."))
+(defmethod diet :carnivore [a] (str (:name a) " eats animals"))
+(defmethod diet :default [a] (str "I don't know what " (:name a) " eats."))
+  (= "Bambi eats veggies."
+     (diet {:species "deer" :name "Bambi" :age 1 :eater :herbivore}))
+
+
+===========================================================================
+  "Animals have different names"
+  (= "Thumper eats veggies."
+     (diet {:species "rabbit" :name "Thumper" :age 1 :eater :herbivore}))
+===========================================================================
+(defmulti diet (fn [x] (:eater x)))
+(defmethod diet :herbivore [a] (str (:name a) " eats veggies."))
+(defmethod diet :carnivore [a] (str (:name a) " eats animals"))
+(defmethod diet :default [a] (str "I don't know what " (:name a) " eats."))
+  (= "Thumper eats veggies."
+     (diet {:species "rabbit" :name "Thumper" :age 1 :eater :herbivore}))
+
+
+===========================================================================
+  "Different methods are used depending on the dispatch function result"
+  (= "Simba eats animals."
+     (diet {:species "lion" :name "Simba" :age 1 :eater :carnivore}))
+===========================================================================
+(defmulti diet (fn [x] (:eater x)))
+(defmethod diet :herbivore [a] (str (:name a) " eats veggies."))
+(defmethod diet :carnivore [a] (str (:name a) " eats animals"))
+(defmethod diet :default [a] (str "I don't know what " (:name a) " eats."))
+  (= "Simba eats animals."
+     (diet {:species "lion" :name "Simba" :age 1 :eater :carnivore}))
+
+===========================================================================
+  "You may use a default method when no others match"
+  (= "I don't know what Rich Hickey eats."
+     (diet {:name "Rich Hickey"})))
+===========================================================================
+(defmulti diet (fn [x] (:eater x)))
+(defmethod diet :herbivore [a] (str (:name a) " eats veggies."))
+(defmethod diet :carnivore [a] (str (:name a) " eats animals"))
+(defmethod diet :default [a] (str "I don't know what " (:name a) " eats."))
+(= "I don't know what Rich Hickey eats."
+     (diet {:name "Rich Hickey"})))
