@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func f(x float64) float64 {
 	return x*x - 2*x + 3
@@ -18,6 +21,7 @@ func dihotomoia(a, b float64) float64 {
 	l := 0.5
 	length := b - a
 	var y, z float64
+	k := 0
 	for float64(length) > l {
 		y = (a + b - eps) / 2
 		z = (a + b + eps) / 2
@@ -27,7 +31,13 @@ func dihotomoia(a, b float64) float64 {
 			a = y
 		}
 		length = b - a
+		k++
 	}
+	fmt.Println("K =", k, " N = ", 2*k)
+	fmt.Println("R(N) = ", 1/math.Pow(2, float64(k)))
+	fmt.Printf("[%f,%f]\n", a, b)
+	res := (a + b) / 2
+	fmt.Println("x* =", res, "f(x*) =", f(res))
 	return (a + b) / 2
 }
 
@@ -83,12 +93,15 @@ func fibonacciSearch(a0, b0 float64) float64 {
 	} else {
 		a = y
 	}
-
+	fmt.Println("K =", k, " N =", N)
+	fmt.Println("R(N) = ", 1/float64(fibonacci(N)))
+	fmt.Printf("[%f,%f]\n", a, b)
+	res := (a + b) / 2
+	fmt.Println("x* =", res, "f(x*) =", f(res))
 	return (a + b) / 2
 }
 
 func main() {
-	resultDih := dihotomoia(-2, 8)
-	resultFib := fibonacciSearch(-2, 8)
-	fmt.Println(resultDih, resultFib)
+	dihotomoia(-2, 8)
+	fibonacciSearch(-2, 8)
 }
