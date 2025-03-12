@@ -2,18 +2,14 @@ package main
 
 import (
 	"fmt"
+	"gonum.org/v1/plot"
+	"gonum.org/v1/plot/plotter"
+	"gonum.org/v1/plot/vg"
 	"math"
 )
 
 func f(x float64) float64 {
 	return x*x - 2*x + 3
-}
-
-func fibonacci(n int) int {
-	if n <= 1 {
-		return n
-	}
-	return fibonacci(n-1) + fibonacci(n-2)
 }
 
 func dihotomoia(a, b float64) float64 {
@@ -34,11 +30,18 @@ func dihotomoia(a, b float64) float64 {
 		k++
 	}
 	fmt.Println("K =", k, " N = ", 2*k)
-	fmt.Println("R(N) = ", 1/math.Pow(2, float64(k)))
+	fmt.Println("R(N) =", 1/math.Pow(2, float64(k)))
 	fmt.Printf("[%f,%f]\n", a, b)
 	res := (a + b) / 2
 	fmt.Println("x* =", res, "f(x*) =", f(res))
 	return (a + b) / 2
+}
+
+func fibonacci(n int) int {
+	if n <= 1 {
+		return n
+	}
+	return fibonacci(n-1) + fibonacci(n-2)
 }
 
 func fibonacciSearch(a0, b0 float64) float64 {
@@ -94,14 +97,75 @@ func fibonacciSearch(a0, b0 float64) float64 {
 		a = y
 	}
 	fmt.Println("K =", k, " N =", N)
-	fmt.Println("R(N) = ", 1/float64(fibonacci(N)))
+	fmt.Println("R(N) =", 1/float64(fibonacci(N)))
 	fmt.Printf("[%f,%f]\n", a, b)
 	res := (a + b) / 2
 	fmt.Println("x* =", res, "f(x*) =", f(res))
 	return (a + b) / 2
 }
 
+func goldenSection(a0, b0 float64) {
+	k := 0
+	y0 := a0 + (3-math.Sqrt(5))/2*(b0-a0)
+	z0 := a0 + b0 - y0
+	length := b0 - a0
+	for length > 0.5 {
+		fy := f(y0)
+		fz := f(z0)
+		if fy <= fz {
+			b0 = z0
+			z0 = y0
+			y0 = a0 + b0 - y0
+		} else {
+			a0 = y0
+			y0 = z0
+			z0 = a0 + b0 - z0
+		}
+		k++
+		length = b0 - a0
+	}
+	N := k + 2
+	RN := math.Pow(0.618, float64(N-1))
+	fmt.Println("K =", k, " N =", N)
+	fmt.Println("R(N) =", RN)
+	fmt.Printf("[%f,%f]\n", a0, b0)
+	res := (a0 + b0) / 2
+	fmt.Println("x* =", res, "f(x*) =", f(res))
+}
+
 func main() {
+	fmt.Println("Метод дихотомии")
 	dihotomoia(-2, 8)
+	fmt.Println("Метод Фибоначчи")
 	fibonacciSearch(-2, 8)
+	fmt.Println("Метод золотого сечения")
+	goldenSection(-2, 8)
+	p := plot.New()
+	p.Title.Text = "График функции"
+	p.X.Label.Text = "x"
+	p.Y.Label.Text = "f(x)"
+
+	xMin, xMax := -2.0, 8.0
+	numPoints := 100
+
+	points := make(plotter.XYs, numPoints)
+	for i := 0; i < numPoints; i++ {
+		x := xMin + float64(i)*(xMax-xMin)/float64(numPoints-1)
+		points[i].X = x
+		points[i].Y = f(x)
+	}
+
+	line, err := plotter.NewLine(points)
+	if err != nil {
+		fmt.Println("Ошибка при создании графика:", err)
+		return
+	}
+	p.Add(line)
+
+	p.X.Min = xMin
+	p.X.Max = xMax
+
+	if err := p.Save(8*vg.Inch, 4*vg.Inch, "plot.png"); err != nil {
+		fmt.Println("Ошибка сохранения:", err)
+	}
 }
